@@ -48,9 +48,6 @@ Entitas data yang dibutuhkan untuk membangun basis data ini meliputi:
 * **Data Transaksi Peminjaman:** Menyimpan ID Transaksi, Tanggal Pinjam, Tanggal Kembali, dan status transaksi. 
 * **Data Detail Transaksi:** Menyimpan detail barang apa saja dan berapa jumlah yang dipinjam dalam satu transaksi. 
 
-### 6. Diagram Proses (Use Case/Flowchart) 
-
- 
 ### 6. Pembagian Tugas Anggota 
 * **Restu:** Menyusun Deskripsi studi kasus, membuat dan mengelola repository GitHub kelompok, serta merapikan Pembagian tugas anggota. 
 * **Almand:** Menyusun Latar belakang dan tujuan sistem.  
