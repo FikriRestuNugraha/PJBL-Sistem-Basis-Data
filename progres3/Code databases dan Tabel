@@ -1,0 +1,63 @@
+-- Create Database
+CREATE DATABASE Inventori_lab;
+USE Inventori_lab;
+
+-- 1. Tabel kategori_barang
+CREATE TABLE kategori_barang (
+id_kategori INT AUTO_INCREMENT,
+nama_kategori VARCHAR(50) NOT NULL,
+PRIMARY KEY (id_kategori)
+);
+
+-- 2. Tabel anggota
+CREATE TABLE anggota (
+id_anggota VARCHAR(20) NOT NULL,
+nama VARCHAR(100) NOT NULL,
+jenis_anggota VARCHAR(20) NOT NULL,
+kontak VARCHAR(50) NULL,
+PRIMARY KEY (id_anggota)
+);
+
+-- 3. Tabel laboran
+CREATE TABLE laboran (
+id_laboran VARCHAR(20) NOT NULL,
+nama VARCHAR(100) NOT NULL,
+kontak VARCHAR(50) NULL,
+PRIMARY KEY (id_laboran)
+);
+
+-- 4. Tabel barang
+CREATE TABLE barang (
+id_barang INT AUTO_INCREMENT,
+nama_barang VARCHAR(100) NOT NULL,
+pesifikasi TEXT NULL,
+stok INT NOT NULL,
+id_kategori INT NOT NULL,
+PRIMARY KEY (id_barang),
+FOREIGN KEY (id_kategori) REFERENCES kategori_barang(id_kategori) ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
+-- 5. Tabel transaksi_peminjaman
+CREATE TABLE transaksi_peminjaman (
+id_transaksi INT AUTO_INCREMENT,
+id_anggota VARCHAR(20) NOT NULL,
+id_laboran VARCHAR(20) NOT NULL,
+tanggal_pinjam DATE NOT NULL,
+tanggal_kembali DATE NULL,
+status VARCHAR(20) NOT NULL,
+PRIMARY KEY (id_transaksi),
+FOREIGN KEY (id_anggota) REFERENCES anggota(id_anggota) ON UPDATE CASCADE ON DELETE RESTRICT,
+FOREIGN KEY (id_laboran) REFERENCES laboran(id_laboran) ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
+-- 6. Tabel detail_transaksi
+CREATE TABLE detail_transaksi (
+id_detail INT AUTO_INCREMENT,
+id_transaksi INT NOT NULL,
+id_barang INT NOT NULL,
+jumlah INT NOT NULL,
+kondisi_kembali VARCHAR(50) NULL,
+PRIMARY KEY (id_detail),
+FOREIGN KEY (id_transaksi) REFERENCES transaksi_peminjaman(id_transaksi) ON DELETE CASCADE,
+FOREIGN KEY (id_barang) REFERENCES barang(id_barang) ON UPDATE CASCADE ON DELETE RESTRICT
+);
