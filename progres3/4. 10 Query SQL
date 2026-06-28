@@ -43,7 +43,7 @@ WHERE tp.id_transaksi IS NULL;
 9. Subquery: Menampilkan detail barang yang pernah dipinjam dengan kondisi kembali 'Baik'
 SELECT nama_barang, spesifikasi FROM barang
 WHERE id_barang IN (
-    SELECT id_barang FROM detail_transaksi WHERE kondisi_kembali = 'Baik'
+SELECT id_barang FROM detail_transaksi WHERE kondisi_kembali = 'Baik'
 );
 
 10. Mengurutkan aset laboratorium berdasarkan jumlah stok terbanyak ke tersedikit
